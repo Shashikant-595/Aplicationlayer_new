@@ -18,37 +18,7 @@ namespace AplicationLayer
             InitializeComponent();
         }
         loginbll logincall =new loginbll(); 
-        
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblheading_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void btnlogin_Click(object sender, EventArgs e)
         {
             string Name = txtuser.Text;

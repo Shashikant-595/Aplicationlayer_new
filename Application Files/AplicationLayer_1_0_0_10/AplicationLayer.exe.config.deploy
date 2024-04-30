@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+  </configSections>
+  <connectionStrings>
+    <add name="AplicationLayer.Properties.Settings.MixingConnectionString" connectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=Mixing;Integrated Security=True;Encrypt=True;TrustServerCertificate=True" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+</configuration>

@@ -7,6 +7,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Timers;
 
+
 namespace Businesslayer
 {
 
@@ -31,7 +32,7 @@ namespace Businesslayer
             StartFileWatcher();
 
             // Initialize and start the timer
-            timer.Interval = 9000; // Adjust interval as needed (in milliseconds)
+            timer.Interval = 40000; // Adjust interval as needed (in milliseconds)
             timer.AutoReset = true;
             timer.Elapsed += TimerElapsed;
             timer.Start();
@@ -79,7 +80,7 @@ namespace Businesslayer
                 // Read the last 100 lines from the file
                 string[] lines = File.ReadLines(filePath)
                                      .Reverse()
-                                     .Take(100)
+                                     .Take(500)
                                      .ToArray();
 
                 foreach (string line in lines)
@@ -125,15 +126,23 @@ namespace Businesslayer
                         }
 
 
-                        Console.WriteLine($"Sapcode: {sapcode}, Rheo_Date_Time:{Rheo_Date_Time} Batch No: {batchNo}");
+                       // Console.WriteLine($"Sapcode: {sapcode}, Rheo_Date_Time:{Rheo_Date_Time} Batch No: {batchNo}");
 
                         // Call a method to handle each line of data
                         //  dataAccess.StoreDataInDatabase(sapcode, batchNo, ml, mh, ts2, tc50, tc90);
                         if (machine.Equals("Rheo"))
                         {
-                            Console.WriteLine("for 1 machine method called ");
-                            dataAccess.StoreDataInDatabase(Rheo_Date_Time,sapcode, batchNo, plantNo, ml, mh, ts2, tc50, tc90, datapassdate);
-                            Console.WriteLine("for 1 machine method exicuted  ");
+                            try
+                            {
+                               // Console.WriteLine("for 1 machine method called ");
+                                dataAccess.StoreDataInDatabase(Rheo_Date_Time, sapcode, batchNo, plantNo, ml, mh, ts2, tc50, tc90, datapassdate);
+                                Console.WriteLine("for rheo1 method is called ");
+                            }
+                            catch { 
+                            
+                          
+                            }
+                           
                         }
                         else if (machine.Equals("Rheo2"))
                         {

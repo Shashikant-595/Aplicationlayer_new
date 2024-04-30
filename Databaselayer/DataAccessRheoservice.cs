@@ -10,7 +10,7 @@ namespace Databaselayer
     public class DataAccessRheoservice
     {
         // private static readonly string connectionString = "Data Source=DESKTOP-QI6H2EA\\SQLEXPRESS;Initial Catalog=Mixing;Integrated Security=True";
-        private string connectionString = "Data Source=192.168.20.70,1433;Initial Catalog=Mixing;User ID=admin;Password=Fores@123;";
+       private string connectionString = "Data Source=192.168.20.70,1433;Initial Catalog=Mixing;User ID=admin;Password=Fores@123;";
 
         public void StoreDataInDatabase(string Rheo_Date_Time, string sap, string batch_no, string plant, decimal ml, decimal mh, decimal ts2, decimal tc50, decimal tc90,string datapassdate)
         {
@@ -51,6 +51,56 @@ namespace Databaselayer
 
                 // Execute the command
                 command.ExecuteNonQuery();
+                // create method taht can easily handle the both batches rs mmoney values for next test .
+                try
+                {
+                    string machine;
+                    using (SqlCommand machineCommand = new SqlCommand("SELECT machine FROM Master WHERE sapcode = @sap", connection))
+                    {
+                        machineCommand.Parameters.AddWithValue("@sap", sap);
+                        machine = (string)machineCommand.ExecuteScalar();
+                        Console.WriteLine("machine found " + machine);
+                    }
+
+                    if (machine == "both")
+                    {
+                        if (batch_no.Length > 12)
+                        {
+                            string[] Usesap = batch_no.Split('-');
+                            string qry1 = "SELECT M_vm,M_vi,M_ml4 FROM [" + sap + "] WHERE Batch_No = '" + Usesap[0].Trim() + "' AND plant = '" + plant + "'";
+
+                            using (SqlCommand command2 = new SqlCommand(qry1, connection))
+                            {
+                                using (SqlDataReader reader = command2.ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        string query6 = "UPDATE [" + sap + "] SET M_vm='" + reader["M_vm"] + "', M_vi='" + reader["M_vi"] + "', M_ml4='" + reader["M_ml4"] + "' WHERE Batch_No='" + batch_no + "' AND plant = '" + plant + "'";
+                                        using (SqlCommand updateCommand = new SqlCommand(query6, connection))
+                                        {
+                                            reader.Close(); // Close the SqlDataReader
+                                            updateCommand.ExecuteNonQuery();
+
+                                            Console.WriteLine("Reverse batch updated with current both new record " + sap + "---" + batch_no);
+                                        }
+                                        Console.WriteLine("Reverse batch b1");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                Console.WriteLine (ex.ToString());
+
+                }
+               
+
+
+
+
+
             }
         }
 
@@ -99,6 +149,45 @@ namespace Databaselayer
 
               // Execute the command
                 command.ExecuteNonQuery();
+                // for second rheo update the rs batch logic 
+
+                string machine;
+                using (SqlCommand machineCommand = new SqlCommand("SELECT machine FROM Master WHERE sapcode = @sap", connection))
+                {
+                    machineCommand.Parameters.AddWithValue("@sap", sap);
+                    machine = (string)machineCommand.ExecuteScalar();
+                }
+
+                if (machine == "both")
+                {
+                    if (batch_no.Length > 12)
+                    {
+                        string[] Usesap = batch_no.Split('-');
+                        string qry1 = "SELECT M_vm,M_vi,M_ml4 FROM [" + sap + "] WHERE Batch_No = '" + Usesap[0].Trim() + "' AND plant = '" + plant + "'";
+
+                        using (SqlCommand command2 = new SqlCommand(qry1, connection))
+                        {
+                            using (SqlDataReader reader = command2.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    string query6 = "UPDATE [" + sap + "] SET M_vm='" + reader["M_vm"] + "', M_vi='" + reader["M_vi"] + "', M_ml4='" + reader["M_ml4"] + "' WHERE Batch_No='" + batch_no + "' AND plant = '" + plant + "'";
+                                    using (SqlCommand updateCommand = new SqlCommand(query6, connection))
+                                    {
+                                        updateCommand.ExecuteNonQuery();
+                                    }
+                                    Console.WriteLine("Reverse batch b1");
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+
+
+
+
             }
         }
 

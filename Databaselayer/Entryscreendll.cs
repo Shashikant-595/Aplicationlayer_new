@@ -11,7 +11,7 @@ namespace Databaselayer
 {
     public class Entryscreendll
     {
-        // private static string connectionString = "Data Source=DESKTOP-QI6H2EA\\SQLEXPRESS;Initial Catalog=Mixing;Integrated Security=True";
+      //   private static string connectionString = "Data Source=DESKTOP-QI6H2EA\\SQLEXPRESS;Initial Catalog=Mixing;Integrated Security=True";
         private static string connectionString = "Data Source=192.168.20.70,1433;Initial Catalog=Mixing;User ID=admin;Password=Fores@123;";
 
         public static (string machineName, string queryType, List<object[]> dataList) RetrieveDataFromTable(string sapCode, string batchNo)
@@ -145,7 +145,7 @@ namespace Databaselayer
             }
 
         }
-        public static void updateRecords(string sapcode, string Batch_no, double h1, double h2, double h3, double h4, double c1, double c2, double c3, double c4, double sg, double dt, double wt, string plant, string message)
+        public static void updateRecords(string sapcode, string Batch_no, double h1, double h2, double h3, double h4, double c1, double c2, double c3, double c4, double sg, double wt, double dt, string plant, string message)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -221,7 +221,7 @@ namespace Databaselayer
             }
 
         }
-        public static void updateRecordswithrejection(string sapcode, string Batch_no, double h1, double h2, double h3, double h4, double c1, double c2, double c3, double c4, double sg, double dt, double wt, string plant, string message)
+        public static void updateRecordswithrejection(string sapcode, string Batch_no, double h1, double h2, double h3, double h4, double c1, double c2, double c3, double c4, double sg, double wt, double dt,  string plant, string message)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

@@ -44,8 +44,8 @@ namespace AplicationLayer
 
             // call the report 
 
-            Reports callreports = new Reports();    
-            callreports.ShowDialog();
+            Reports callreports = new Reports();
+            callreports.Show();
 
         }
 
@@ -102,7 +102,7 @@ namespace AplicationLayer
                 else
                 {
                     // call method for only rheomachine
-                    Entryscreenbll.callRheo(sapcode, batchno, ml, mh, ts2, tc50, tc90, H1, H2, H3, H4, sg, dt, wt);
+                    Entryscreenbll.callRheo(sapcode, batchno, ml, mh, ts2, tc50, tc90, H1, H2, H3, H4, sg, wt, dt );
                     var (machine, querytype, message) = Entryscreenbll.validaeteMaster(sapcode);
                     Console.WriteLine("machine from ui layer" + machine);
                     MessageBox.Show(message.ToString(), "Batch Quality Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -137,7 +137,7 @@ namespace AplicationLayer
                 else
                 {
                     // call method for only rheocon
-                    Entryscreenbll.callRheocon(sapcode, batchno, ml, mh, ts2, tc50, tc90, H1, H2, H3, H4, sg, C1, C2, C3, C4, dt, wt);
+                    Entryscreenbll.callRheocon(sapcode, batchno, ml, mh, ts2, tc50, tc90, H1, H2, H3, H4, sg, C1, C2, C3, C4, wt, dt);
                     var (machine, querytype, message) = Entryscreenbll.validaeteMaster(sapcode);
                     Console.WriteLine("machine from ui layer" + machine);
                     MessageBox.Show(message.ToString(), "Batch Quality Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -167,8 +167,8 @@ namespace AplicationLayer
             else if (machineName.Equals("both") && queryType.Equals("Both"))
             {
 
-                if (string.IsNullOrEmpty(sapcode) || string.IsNullOrEmpty(vm) || string.IsNullOrEmpty(vi) ||
-                    string.IsNullOrEmpty(ml4) || string.IsNullOrEmpty(ml) || string.IsNullOrEmpty(mh) ||
+                if (string.IsNullOrEmpty(sapcode) 
+                     || string.IsNullOrEmpty(ml) || string.IsNullOrEmpty(mh) ||
                     string.IsNullOrEmpty(ts2) || string.IsNullOrEmpty(tc50) || string.IsNullOrEmpty(tc90) ||
                     string.IsNullOrEmpty(H1) || string.IsNullOrEmpty(H2) || string.IsNullOrEmpty(H3) ||
                     string.IsNullOrEmpty(H4) || string.IsNullOrEmpty(sg) || string.IsNullOrEmpty(dt) ||
@@ -180,7 +180,7 @@ namespace AplicationLayer
                 else
                 {
                     // call method for only both
-                    Entryscreenbll.callBoth(sapcode, batchno, vm, vi, ml4, ml, mh, ts2, tc50, tc90, H1, H2, H3, H4, sg, dt, wt);
+                    Entryscreenbll.callBoth(sapcode, batchno, vm, vi, ml4, ml, mh, ts2, tc50, tc90, H1, H2, H3, H4, sg, wt, dt);
                     var (machine, querytype, message) = Entryscreenbll.validaeteMaster(sapcode);
                     Console.WriteLine("machine from ui layer" + machine);
                     MessageBox.Show(message.ToString(), "Batch Quality Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -207,8 +207,8 @@ namespace AplicationLayer
             }
             else if (machineName.Equals("both") && queryType.Equals("Bothcon"))
             {
-                if (string.IsNullOrEmpty(sapcode) || string.IsNullOrEmpty(vm) || string.IsNullOrEmpty(vi) ||
-                    string.IsNullOrEmpty(ml4) || string.IsNullOrEmpty(ml) || string.IsNullOrEmpty(mh) ||
+                if (string.IsNullOrEmpty(sapcode) || 
+                    string.IsNullOrEmpty(ml) || string.IsNullOrEmpty(mh) ||
                     string.IsNullOrEmpty(ts2) || string.IsNullOrEmpty(tc50) || string.IsNullOrEmpty(tc90) ||
                     string.IsNullOrEmpty(H1) || string.IsNullOrEmpty(H2) || string.IsNullOrEmpty(H3) ||
                     string.IsNullOrEmpty(H4) || string.IsNullOrEmpty(sg) || string.IsNullOrEmpty(C1) ||
@@ -221,7 +221,7 @@ namespace AplicationLayer
                 else
                 {
                     // call method for only both
-                    Entryscreenbll.callBothcon(sapcode, batchno, vm, vi, ml4, ml, mh, ts2, tc50, tc90, H1, H2, H3, H4, sg, C1, C2, C3, C4, dt, wt);
+                    Entryscreenbll.callBothcon(sapcode, batchno, vm, vi, ml4, ml, mh, ts2, tc50, tc90, H1, H2, H3, H4, sg, C1, C2, C3, C4, wt, dt);
                     var (machine, querytype, message) = Entryscreenbll.validaeteMaster(sapcode);
                     Console.WriteLine("machine from ui layer" + machine);
                     MessageBox.Show(message.ToString(), "Batch Quality Status", MessageBoxButtons.OK, MessageBoxIcon.Information);

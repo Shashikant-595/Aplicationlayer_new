@@ -53,7 +53,7 @@ namespace Businesslayer
         static double hrdmean;
         static double conmean;
        
-        public static void callBoth(string sap,string batch_no, string vm, string vi, string ml4, string ml, string mh, string ts2, string tc50, string tc90, string H1, string H2, string H3, string H4, string sg,string dt, string wt)
+        public static void callBoth(string sap,string batch_no, string vm, string vi, string ml4, string ml, string mh, string ts2, string tc50, string tc90, string H1, string H2, string H3, string H4, string sg, string wt,string dt)
         {
             sapcode = sap;
             batchno = batch_no;
@@ -75,7 +75,7 @@ namespace Businesslayer
             hrdmean = (H1val + H2val + H3val + H4val) / 4;
         }
 
-        public static void callBothcon(string sap, string batch_no, string vm, string vi, string ml4, string ml, string mh, string ts2, string tc50, string tc90, string H1, string H2, string H3, string H4, string sg, string c1, string c2, string c3, string c4, string dt, string wt)
+        public static void callBothcon(string sap, string batch_no, string vm, string vi, string ml4, string ml, string mh, string ts2, string tc50, string tc90, string H1, string H2, string H3, string H4, string sg, string c1, string c2, string c3, string c4, string wt, string dt)
         {
             sapcode = sap;
             batchno = batch_no;
@@ -99,7 +99,8 @@ namespace Businesslayer
             double.TryParse(dt, out dtval);
             double.TryParse(wt, out wtval);
             hrdmean = (H1val + H2val + H3val + H4val) / 4;
-            conmean = (C1val+C2val+C3val+C4val) / 4;
+            conmean = (C1val + C2val + C3val + C4val) / 4;
+            Console.WriteLine("conductivity mean=" + conmean);
         }
 
         public static void callmoony(string  vm, string vi, string ml4 )
@@ -112,7 +113,7 @@ namespace Businesslayer
            
         }
 
-        public static void callRheo(string sap, string batch_no, string ml, string mh, string ts2, string tc50, string tc90,string H1,string H2,string H3,string H4,string sg,string dt,string wt)
+        public static void callRheo(string sap, string batch_no, string ml, string mh, string ts2, string tc50, string tc90,string H1,string H2,string H3,string H4,string sg, string wt,string dt)
         {
             sapcode = sap;
             batchno = batch_no;
@@ -134,7 +135,7 @@ namespace Businesslayer
 
 
         }
-        public static void callRheocon(string sap, string batch_no, string ml, string mh, string ts2, string tc50, string tc90, string H1, string H2, string H3, string H4, string sg,string c1,string c2, string c3, string c4, string dt, string wt)
+        public static void callRheocon(string sap, string batch_no, string ml, string mh, string ts2, string tc50, string tc90, string H1, string H2, string H3, string H4, string sg,string c1,string c2, string c3, string c4, string wt, string dt)
         {
             sapcode = sap;
             batchno = batch_no;
@@ -155,7 +156,7 @@ namespace Businesslayer
             double.TryParse(dt, out dtval);
             double.TryParse(wt, out wtval);
             hrdmean = (H1val + H2val + H3val + H4val) / 4;
-            conmean = (C1val+C2val+C3val+C4val) / 4;
+            conmean = (C1val + C2val + C3val + C4val) / 4;
             Console.WriteLine("hrdmen" + hrdmean);
 
 
@@ -315,15 +316,19 @@ namespace Businesslayer
                         Console.WriteLine("plant======" + plantNo);
                         string Message = "OK";
                         // for update query with okk status 
-                        Entryscreendll.updateRecords(sapcode, batchno, H1val, H2val, H3val, H4val,sgval, dtval,wtval, plantNo,Message);
+                        Entryscreendll.updateRecords(sapcode, batchno, H1val, H2val, H3val, H4val,sgval, wtval, dtval, plantNo,Message);
                         Console.WriteLine("method exicuted ");
+
+
+
+
                     }
                     else
                     {
                         Console.WriteLine("plant======"+plantNo);
 
                         string PassRejection = Rejection.ToString();
-                        Entryscreendll.updateRecordswithrejection(sapcode, batchno, H1val, H2val, H3val, H4val, sgval, dtval,wtval, plantNo, PassRejection);
+                        Entryscreendll.updateRecordswithrejection(sapcode, batchno, H1val, H2val, H3val, H4val, sgval, wtval, dtval, plantNo, PassRejection);
 
                     }
                     // call the above parameter for validate  
@@ -370,6 +375,7 @@ namespace Businesslayer
                     bool tc50Ok = tc50Value >= tc50min && tc50Value <= tc50max;
                     bool tc90Ok = tc90Value >= tc90min && tc90Value <= tc90max;
                     Console.WriteLine("hrdmeanOk" + hrdmeanOk);
+                    Console.WriteLine("rheocon test ======" + conmeanok);
 
                     if (hrdmeanOk == true)
                     {
@@ -444,6 +450,7 @@ namespace Businesslayer
                         Rejection.Append("R5,");
                     }
                     if (hrdmean >= hardmin && hrdmean <= hrdmax
+                        
                         && conmean >= conmin && conmean <= conmax
                         && sgval >= sgmin && sgval <= sgmax
                         && mlValue >= mlmin && mlValue <= mlmax
@@ -456,7 +463,7 @@ namespace Businesslayer
 
                         string Message = "OK";
                         // for update query with okk status 
-                        Entryscreendll.updateRecords(sapcode, batchno, H1val, H2val, H3val, H4val,C1val,C2val,C3val,C4val, sgval, dtval, wtval, plantNo, Message);
+                        Entryscreendll.updateRecords(sapcode, batchno, H1val, H2val, H3val, H4val,C1val,C2val,C3val,C4val, sgval, wtval, dtval, plantNo, Message);
                         Console.WriteLine("method exicuted ");
                     }
                     else
@@ -464,7 +471,7 @@ namespace Businesslayer
                         // for rejection
 
                         string PassRejection = Rejection.ToString();
-                        Entryscreendll.updateRecordswithrejection(sapcode, batchno, H1val, H2val, H3val, H4val, C1val, C2val, C3val, C4val, sgval, dtval, wtval, plantNo, PassRejection);
+                        Entryscreendll.updateRecordswithrejection(sapcode, batchno, H1val, H2val, H3val, H4val, C1val, C2val, C3val, C4val, sgval, wtval, dtval, plantNo, PassRejection);
 
                     }
 
@@ -624,14 +631,14 @@ namespace Businesslayer
                         // for update query with okk status 
                         string Message = "OK";
                         // for update query with okk status 
-                        Entryscreendll.updateRecords(sapcode, batchno, H1val, H2val, H3val, H4val, sgval, dtval, wtval, plantNo, Message);
+                        Entryscreendll.updateRecords(sapcode, batchno, H1val, H2val, H3val, H4val, sgval, wtval, dtval,plantNo, Message);
                         Console.WriteLine("method exicuted ");
                     }
                     else
                     {
                         // for re
                         string PassRejection = Rejection.ToString();
-                        Entryscreendll.updateRecordswithrejection(sapcode, batchno, H1val, H2val, H3val, H4val,sgval, dtval, wtval, plantNo, PassRejection);
+                        Entryscreendll.updateRecordswithrejection(sapcode, batchno, H1val, H2val, H3val, H4val,sgval, wtval, dtval, plantNo, PassRejection);
 
 
                     }
@@ -685,12 +692,16 @@ namespace Businesslayer
                     bool hrdmeanOk = hrdmean >= hardmin && hrdmean <= hrdmax;
                     bool specGravityOk = sgval >= sgmin && sgval <= sgmax;
                     bool conmeanok = conmean >= conmin && conmean <= conmax;
+                    Console.WriteLine("status" + conmeanok);
+                    Console.WriteLine("conmin=" + conmin+"conmax="+ conmax);
+
                     bool mlMinOk = mlValue >= mlmin && mlValue <= mlmax;
                     bool mhOk = mhValue >= mhmin && mhValue <= mhmax;
                     bool ts2Ok = ts2Value >= ts2min && ts2Value <= ts2max;
                     bool tc50Ok = tc50Value >= tc50min && tc50Value <= tc50max;
                     bool tc90Ok = tc90Value >= tc90min && tc90Value <= tc90max;
                     Console.WriteLine("hrdmeanOk" + hrdmeanOk);
+                    Console.WriteLine("both con======" + conmeanok);
                     if (viok == true)
                     {
                         message.Append("VI is = ✓.\n");
@@ -740,11 +751,13 @@ namespace Businesslayer
                     if (conmeanok == true)
                     {
                         message.Append("Condutivity is =✓.\n");
+                        Console.WriteLine("con ok exicuted ");
                     }
                     if (conmeanok == false)
                     {
                         message.Append("Conductivity is = ✗.\n");
                         Rejection.Append("C1,");
+                        Console.WriteLine("con rejecction exicuted ");
                     }
                     if (mlMinOk == true)
                     {
@@ -804,7 +817,7 @@ namespace Businesslayer
 
                         string Message = "OK";
                         // for update query with okk status 
-                        Entryscreendll.updateRecords(sapcode, batchno, H1val, H2val, H3val, H4val, C1val, C2val, C3val, C4val, sgval, dtval, wtval, plantNo, Message);
+                        Entryscreendll.updateRecords(sapcode, batchno, H1val, H2val, H3val, H4val, C1val, C2val, C3val, C4val, sgval, wtval, dtval, plantNo, Message);
                         Console.WriteLine("method exicuted ");
                     }
                     else
@@ -812,7 +825,7 @@ namespace Businesslayer
                         // for re
 
                         string PassRejection = Rejection.ToString();
-                        Entryscreendll.updateRecordswithrejection(sapcode, batchno, H1val, H2val, H3val, H4val, C1val, C2val, C3val, C4val, sgval, dtval, wtval, plantNo, PassRejection);
+                        Entryscreendll.updateRecordswithrejection(sapcode, batchno, H1val, H2val, H3val, H4val, C1val, C2val, C3val, C4val, sgval, wtval,dtval, plantNo, PassRejection);
 
                     }
                     // call the above parameter for validate  

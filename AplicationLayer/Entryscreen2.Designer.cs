@@ -136,9 +136,8 @@
             this.h4.BackColor = System.Drawing.SystemColors.Window;
             this.h4.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.h4.Location = new System.Drawing.Point(1078, 45);
-            this.h4.Multiline = true;
             this.h4.Name = "h4";
-            this.h4.Size = new System.Drawing.Size(120, 43);
+            this.h4.Size = new System.Drawing.Size(120, 37);
             this.h4.TabIndex = 12;
             this.h4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -157,9 +156,8 @@
             this.h3.BackColor = System.Drawing.SystemColors.Window;
             this.h3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.h3.Location = new System.Drawing.Point(858, 45);
-            this.h3.Multiline = true;
             this.h3.Name = "h3";
-            this.h3.Size = new System.Drawing.Size(120, 43);
+            this.h3.Size = new System.Drawing.Size(120, 37);
             this.h3.TabIndex = 10;
             this.h3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -178,9 +176,8 @@
             this.h2.BackColor = System.Drawing.SystemColors.Window;
             this.h2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.h2.Location = new System.Drawing.Point(637, 44);
-            this.h2.Multiline = true;
             this.h2.Name = "h2";
-            this.h2.Size = new System.Drawing.Size(120, 43);
+            this.h2.Size = new System.Drawing.Size(120, 37);
             this.h2.TabIndex = 8;
             this.h2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.h2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.h2_KeyPress);
@@ -201,9 +198,8 @@
             this.h1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.h1.ForeColor = System.Drawing.Color.Black;
             this.h1.Location = new System.Drawing.Point(416, 44);
-            this.h1.Multiline = true;
             this.h1.Name = "h1";
-            this.h1.Size = new System.Drawing.Size(120, 43);
+            this.h1.Size = new System.Drawing.Size(120, 37);
             this.h1.TabIndex = 2;
             this.h1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.h1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.h1_KeyPress);
@@ -250,9 +246,8 @@
             this.c4.BackColor = System.Drawing.SystemColors.Window;
             this.c4.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c4.Location = new System.Drawing.Point(1078, 42);
-            this.c4.Multiline = true;
             this.c4.Name = "c4";
-            this.c4.Size = new System.Drawing.Size(120, 43);
+            this.c4.Size = new System.Drawing.Size(120, 37);
             this.c4.TabIndex = 14;
             this.c4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -271,9 +266,8 @@
             this.c3.BackColor = System.Drawing.SystemColors.Window;
             this.c3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c3.Location = new System.Drawing.Point(858, 41);
-            this.c3.Multiline = true;
             this.c3.Name = "c3";
-            this.c3.Size = new System.Drawing.Size(120, 43);
+            this.c3.Size = new System.Drawing.Size(120, 37);
             this.c3.TabIndex = 12;
             this.c3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -292,9 +286,8 @@
             this.c2.BackColor = System.Drawing.SystemColors.Window;
             this.c2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c2.Location = new System.Drawing.Point(637, 41);
-            this.c2.Multiline = true;
             this.c2.Name = "c2";
-            this.c2.Size = new System.Drawing.Size(120, 43);
+            this.c2.Size = new System.Drawing.Size(120, 37);
             this.c2.TabIndex = 10;
             this.c2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -313,9 +306,8 @@
             this.c1.BackColor = System.Drawing.SystemColors.Window;
             this.c1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c1.Location = new System.Drawing.Point(416, 41);
-            this.c1.Multiline = true;
             this.c1.Name = "c1";
-            this.c1.Size = new System.Drawing.Size(120, 43);
+            this.c1.Size = new System.Drawing.Size(120, 37);
             this.c1.TabIndex = 8;
             this.c1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -362,10 +354,9 @@
             this.txtwt.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtwt.ForeColor = System.Drawing.Color.MediumBlue;
             this.txtwt.Location = new System.Drawing.Point(858, 46);
-            this.txtwt.Multiline = true;
             this.txtwt.Name = "txtwt";
             this.txtwt.ReadOnly = true;
-            this.txtwt.Size = new System.Drawing.Size(120, 43);
+            this.txtwt.Size = new System.Drawing.Size(120, 37);
             this.txtwt.TabIndex = 14;
             this.txtwt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -384,9 +375,8 @@
             this.txtdt.BackColor = System.Drawing.SystemColors.Window;
             this.txtdt.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdt.Location = new System.Drawing.Point(637, 46);
-            this.txtdt.Multiline = true;
             this.txtdt.Name = "txtdt";
-            this.txtdt.Size = new System.Drawing.Size(120, 43);
+            this.txtdt.Size = new System.Drawing.Size(120, 37);
             this.txtdt.TabIndex = 12;
             this.txtdt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -405,9 +395,8 @@
             this.txtsg.BackColor = System.Drawing.SystemColors.Window;
             this.txtsg.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsg.Location = new System.Drawing.Point(416, 46);
-            this.txtsg.Multiline = true;
             this.txtsg.Name = "txtsg";
-            this.txtsg.Size = new System.Drawing.Size(120, 43);
+            this.txtsg.Size = new System.Drawing.Size(120, 37);
             this.txtsg.TabIndex = 10;
             this.txtsg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -538,10 +527,9 @@
             this.txttc50.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttc50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.txttc50.Location = new System.Drawing.Point(1078, 49);
-            this.txttc50.Multiline = true;
             this.txttc50.Name = "txttc50";
             this.txttc50.ReadOnly = true;
-            this.txttc50.Size = new System.Drawing.Size(120, 43);
+            this.txttc50.Size = new System.Drawing.Size(120, 37);
             this.txttc50.TabIndex = 4;
             this.txttc50.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -551,10 +539,9 @@
             this.txtts2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtts2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.txtts2.Location = new System.Drawing.Point(858, 49);
-            this.txtts2.Multiline = true;
             this.txtts2.Name = "txtts2";
             this.txtts2.ReadOnly = true;
-            this.txtts2.Size = new System.Drawing.Size(120, 43);
+            this.txtts2.Size = new System.Drawing.Size(120, 37);
             this.txtts2.TabIndex = 3;
             this.txtts2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -564,10 +551,9 @@
             this.txtmh.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtmh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.txtmh.Location = new System.Drawing.Point(637, 58);
-            this.txtmh.Multiline = true;
             this.txtmh.Name = "txtmh";
             this.txtmh.ReadOnly = true;
-            this.txtmh.Size = new System.Drawing.Size(120, 43);
+            this.txtmh.Size = new System.Drawing.Size(120, 37);
             this.txtmh.TabIndex = 2;
             this.txtmh.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -577,10 +563,9 @@
             this.txtml.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtml.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.txtml.Location = new System.Drawing.Point(416, 58);
-            this.txtml.Multiline = true;
             this.txtml.Name = "txtml";
             this.txtml.ReadOnly = true;
-            this.txtml.Size = new System.Drawing.Size(120, 43);
+            this.txtml.Size = new System.Drawing.Size(120, 37);
             this.txtml.TabIndex = 1;
             this.txtml.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -646,10 +631,9 @@
             this.txtml4.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtml4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.txtml4.Location = new System.Drawing.Point(861, 36);
-            this.txtml4.Multiline = true;
             this.txtml4.Name = "txtml4";
             this.txtml4.ReadOnly = true;
-            this.txtml4.Size = new System.Drawing.Size(120, 43);
+            this.txtml4.Size = new System.Drawing.Size(120, 37);
             this.txtml4.TabIndex = 2;
             this.txtml4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtml4.TextChanged += new System.EventHandler(this.txtml4_TextChanged);
@@ -660,10 +644,9 @@
             this.txtvi.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtvi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.txtvi.Location = new System.Drawing.Point(640, 36);
-            this.txtvi.Multiline = true;
             this.txtvi.Name = "txtvi";
             this.txtvi.ReadOnly = true;
-            this.txtvi.Size = new System.Drawing.Size(120, 43);
+            this.txtvi.Size = new System.Drawing.Size(120, 37);
             this.txtvi.TabIndex = 1;
             this.txtvi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -673,10 +656,9 @@
             this.txtvm.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtvm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.txtvm.Location = new System.Drawing.Point(419, 36);
-            this.txtvm.Multiline = true;
             this.txtvm.Name = "txtvm";
             this.txtvm.ReadOnly = true;
-            this.txtvm.Size = new System.Drawing.Size(120, 43);
+            this.txtvm.Size = new System.Drawing.Size(120, 37);
             this.txtvm.TabIndex = 0;
             this.txtvm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -686,7 +668,6 @@
             this.txtscaner.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtscaner.ForeColor = System.Drawing.Color.MediumBlue;
             this.txtscaner.Location = new System.Drawing.Point(135, 19);
-            this.txtscaner.Multiline = true;
             this.txtscaner.Name = "txtscaner";
             this.txtscaner.Size = new System.Drawing.Size(685, 40);
             this.txtscaner.TabIndex = 75;
@@ -698,10 +679,9 @@
             this.txtbatchno.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbatchno.ForeColor = System.Drawing.Color.MediumBlue;
             this.txtbatchno.Location = new System.Drawing.Point(1172, 111);
-            this.txtbatchno.Multiline = true;
             this.txtbatchno.Name = "txtbatchno";
             this.txtbatchno.ReadOnly = true;
-            this.txtbatchno.Size = new System.Drawing.Size(276, 46);
+            this.txtbatchno.Size = new System.Drawing.Size(276, 37);
             this.txtbatchno.TabIndex = 74;
             // 
             // label2
@@ -721,10 +701,9 @@
             this.txtsacode.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsacode.ForeColor = System.Drawing.Color.MediumBlue;
             this.txtsacode.Location = new System.Drawing.Point(531, 106);
-            this.txtsacode.Multiline = true;
             this.txtsacode.Name = "txtsacode";
             this.txtsacode.ReadOnly = true;
-            this.txtsacode.Size = new System.Drawing.Size(309, 46);
+            this.txtsacode.Size = new System.Drawing.Size(309, 37);
             this.txtsacode.TabIndex = 72;
             // 
             // label1

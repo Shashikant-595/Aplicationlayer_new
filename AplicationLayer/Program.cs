@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.ServiceProcess;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Businesslayer;
+using OfficeOpenXml;
 
 namespace AplicationLayer
 {
@@ -13,34 +15,50 @@ namespace AplicationLayer
         [STAThread]
         static void Main()
         {
-            // Start the service
-           
-            // Instantiate RheometerService
-           RheometerService rheometerService = new RheometerService();
+            try
+            {
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // or LicenseContext.Commercial
+                ConfigurationHandler.CreateConfigurationFile();
+                ConfigurationHandler.ReadConfigurationFile();
 
-            // Start the file watcher
-           rheometerService.StartFileWatcher();
+                // Start the service
 
-          
+                // Instantiate RheometerService
+                RheometerService rheometerService = new RheometerService();
 
-            ConfigurationHandler.CreateConfigurationFile();
-            ConfigurationHandler.ReadConfigurationFile();
+                // Start the file watcher
+             //   rheometerService.StartFileWatcher();
 
-            // Subscribe to the ApplicationExit event
-           
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            login loginForm = new login();
-
-            // Subscribe to the FormClosing event of the login form
-           loginForm.FormClosing += LoginForm_FormClosing;
-
-            // Run the application with the login form
-            Application.Run(loginForm);
+                // Subscribe to the ApplicationExit event
 
 
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                login loginForm = new login();
 
+                // Subscribe to the FormClosing event of the login form
+                loginForm.FormClosing += LoginForm_FormClosing;
+
+                // Run the application with the login form
+                Application.Run(loginForm);
+
+           }
+            catch (ArgumentNullException e)
+            {
+                MessageBox.Show("Errrororo" + e.Message);
+
+            }
+            catch (SqlException ex){
+                MessageBox.Show("Errrororo" + ex.Message);
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                MessageBox.Show("Errrororo" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Errrororo" + ex.Message);
+            }
         }
 
 

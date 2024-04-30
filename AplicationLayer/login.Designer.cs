@@ -53,7 +53,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1180, 530);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+          
             // 
             // btnlogin
             // 
@@ -77,7 +77,7 @@
             this.txtpass.Name = "txtpass";
             this.txtpass.Size = new System.Drawing.Size(235, 47);
             this.txtpass.TabIndex = 4;
-            this.txtpass.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+          
             // 
             // txtuser
             // 
@@ -88,8 +88,7 @@
             this.txtuser.Name = "txtuser";
             this.txtuser.Size = new System.Drawing.Size(235, 47);
             this.txtuser.TabIndex = 3;
-            this.txtuser.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
+          
             // label2
             // 
             this.label2.AutoSize = true;
@@ -100,8 +99,7 @@
             this.label2.Size = new System.Drawing.Size(121, 33);
             this.label2.TabIndex = 2;
             this.label2.Text = "Password";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
+           
             // label1
             // 
             this.label1.AutoSize = true;
@@ -112,7 +110,7 @@
             this.label1.Size = new System.Drawing.Size(124, 33);
             this.label1.TabIndex = 1;
             this.label1.Text = "Username";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // lblheading
             // 
@@ -125,7 +123,7 @@
             this.lblheading.TabIndex = 0;
             this.lblheading.Text = "Rheometer Login";
             this.lblheading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblheading.Click += new System.EventHandler(this.lblheading_Click);
+          
             // 
             // login
             // 
@@ -136,6 +134,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.login_Load);
             this.panel1.ResumeLayout(false);

@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reports));
             this.advancedDataGridView = new Zuby.ADGV.AdvancedDataGridView();
+            this.btnExportToExcel = new System.Windows.Forms.Button();
+            this.btnrefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,6 +88,32 @@
             this.advancedDataGridView.TabIndex = 0;
             this.advancedDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.advancedDataGridView1_CellContentClick);
             // 
+            // btnExportToExcel
+            // 
+            this.btnExportToExcel.BackColor = System.Drawing.Color.Teal;
+            this.btnExportToExcel.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportToExcel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnExportToExcel.Location = new System.Drawing.Point(3, 3);
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.Size = new System.Drawing.Size(80, 38);
+            this.btnExportToExcel.TabIndex = 1;
+            this.btnExportToExcel.Text = "export";
+            this.btnExportToExcel.UseVisualStyleBackColor = false;
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            // 
+            // btnrefresh
+            // 
+            this.btnrefresh.BackColor = System.Drawing.Color.Orange;
+            this.btnrefresh.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnrefresh.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnrefresh.Location = new System.Drawing.Point(3, 38);
+            this.btnrefresh.Name = "btnrefresh";
+            this.btnrefresh.Size = new System.Drawing.Size(80, 40);
+            this.btnrefresh.TabIndex = 2;
+            this.btnrefresh.Text = "refresh";
+            this.btnrefresh.UseVisualStyleBackColor = false;
+            this.btnrefresh.Click += new System.EventHandler(this.btnrefresh_Click);
+            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 29F);
@@ -93,6 +121,8 @@
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1924, 837);
+            this.Controls.Add(this.btnrefresh);
+            this.Controls.Add(this.btnExportToExcel);
             this.Controls.Add(this.advancedDataGridView);
             this.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -109,5 +139,7 @@
         #endregion
 
         private Zuby.ADGV.AdvancedDataGridView advancedDataGridView;
+        private System.Windows.Forms.Button btnExportToExcel;
+        private System.Windows.Forms.Button btnrefresh;
     }
 }
