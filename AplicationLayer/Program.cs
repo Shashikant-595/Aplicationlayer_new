@@ -24,7 +24,7 @@ namespace AplicationLayer
                 // Start the service
 
                 // Instantiate RheometerService
-                RheometerService rheometerService = new RheometerService();
+              //  RheometerService rheometerService = new RheometerService();
 
                 // Start the file watcher
              //   rheometerService.StartFileWatcher();
