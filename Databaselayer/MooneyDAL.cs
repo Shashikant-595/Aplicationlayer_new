@@ -16,6 +16,7 @@ namespace Databaselayer
     {
         //string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
         private string connectionString = "Data Source=192.168.20.70,1433;Initial Catalog=Mixing;User ID=admin;Password=Fores@123;";
+        //private string connectionString = "Data Source=10.0.0.4,1433;Initial Catalog=Mixing;User ID=Sa;Password=Fores@123;";
 
         // private string connectionString = "Data Source=DESKTOP-QI6H2EA\\SQLEXPRESS;Initial Catalog=Mixing;Integrated Security=True";
         string machine = "moony"; 

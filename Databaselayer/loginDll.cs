@@ -13,6 +13,7 @@ namespace Databaselayer
 
      //   private string connectionString = "Data Source=DESKTOP-QI6H2EA\\SQLEXPRESS;Initial Catalog=Mixing;Integrated Security=True";
         private string connectionString = "Data Source=192.168.20.70,1433;Initial Catalog=Mixing;User ID=admin;Password=Fores@123;";
+       // private string connectionString = "Data Source=10.0.0.4,1433;Initial Catalog=Mixing;User ID=Sa;Password=Fores@123;";
 
         public bool ValidateUser( string Name, string password)
         { 
@@ -41,6 +42,7 @@ namespace Databaselayer
             {
                 // Handle exceptions
                 Console.WriteLine("dlll" + ex.Message);
+                System.Windows.Forms.MessageBox.Show("An error occurred: " + ex.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
 
             return isAuthenticated;

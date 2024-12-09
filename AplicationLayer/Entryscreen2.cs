@@ -44,8 +44,10 @@ namespace AplicationLayer
 
             // call the report 
 
-            Reports callreports = new Reports();
-            callreports.Show();
+            //Reports callreports = new Reports();
+            //callreports.Show();
+            General_report callrepo = new General_report(); 
+            callrepo.Show();
 
         }
 
@@ -103,6 +105,9 @@ namespace AplicationLayer
                 {
                     // call method for only rheomachine
                     Entryscreenbll.callRheo(sapcode, batchno, ml, mh, ts2, tc50, tc90, H1, H2, H3, H4, sg, wt, dt );
+
+                    // call qrcode print method and pass data in to ok table
+
                     var (machine, querytype, message) = Entryscreenbll.validaeteMaster(sapcode);
                     Console.WriteLine("machine from ui layer" + machine);
                     MessageBox.Show(message.ToString(), "Batch Quality Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -138,6 +143,8 @@ namespace AplicationLayer
                 {
                     // call method for only rheocon
                     Entryscreenbll.callRheocon(sapcode, batchno, ml, mh, ts2, tc50, tc90, H1, H2, H3, H4, sg, C1, C2, C3, C4, wt, dt);
+
+
                     var (machine, querytype, message) = Entryscreenbll.validaeteMaster(sapcode);
                     Console.WriteLine("machine from ui layer" + machine);
                     MessageBox.Show(message.ToString(), "Batch Quality Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -254,7 +261,7 @@ namespace AplicationLayer
 
         }
 
-        private void txtscaner_TextChanged(object sender, EventArgs e)
+        private async void txtscaner_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -264,207 +271,222 @@ namespace AplicationLayer
                 String btchNo = Getscannerdata[1];
                 String wt= Getscannerdata[2];
                 Console.WriteLine("2nd" + wt);
-                // Call BLL method to retrieve data
-                // Call BLL method to retrieve data
-                var (machineName, queryType, dataList) = Entryscreenbll.RetrieveDataFromTable(sapcode, btchNo);
+                // await Task.Delay(3000);
 
-                // Display machine name and query type
-               // MessageBox.Show($"Machine Name: {machineName}\nQuery Type: {queryType}\n datalist{dataList}");
-               // Based on the above data i need to hide and show data according to machine 
-                Console.WriteLine("selected data from tables " + dataList);
-                if (machineName.Equals("rheo") && queryType.Equals("rheocon"))
+             bool status = Entryscreenbll.CheckStatus(sapcode, btchNo);
+
+                if (status)
                 {
-                    mooneypane.Hide();
-                    rheopane.Show();
-                    conpane.Show();
-                    hardnesspane.Show();
-                    txtsg.Show();
-                    lblgrt.Show();
-                    mooneypane.Hide();
-                    object vm = null, vi = null, ml4 = null, ml = null, mh = null, ts2 = null, tc50 = null, tc90 = null;
-                    // no pane is required to hide 
-                    if (!dataList.Any())
+                    // Call BLL method to retrieve data
+                    var (machineName, queryType, dataList) = Entryscreenbll.RetrieveDataFromTable(sapcode, btchNo);
+
+                    // Display machine name and query type
+                    // MessageBox.Show($"Machine Name: {machineName}\nQuery Type: {queryType}\n datalist{dataList}");
+                    // Based on the above data i need to hide and show data according to machine 
+                    Console.WriteLine("selected data from tables " + dataList);
+                    if (machineName.Equals("rheo") && queryType.Equals("rheocon"))
                     {
-                        // data list is empty 
-                        MessageBox.Show("No Record found");
+                        mooneypane.Hide();
+                        rheopane.Show();
+                        conpane.Show();
+                        hardnesspane.Show();
+                        txtsg.Show();
+                        lblgrt.Show();
+                        mooneypane.Hide();
+                        object vm = null, vi = null, ml4 = null, ml = null, mh = null, ts2 = null, tc50 = null, tc90 = null;
+                        // no pane is required to hide 
+                        if (!dataList.Any())
+                        {
+                            // data list is empty 
+                            MessageBox.Show("No Record found");
+
+                        }
+                        foreach (object[] row in dataList)
+                        {
+
+                            ml = row[3];
+                            mh = row[4];
+                            ts2 = row[5];
+                            tc50 = row[6];
+                            tc90 = row[7];
+                        }
+
+                        txtbatchno.Text = btchNo.ToString();
+                        txtsacode.Text = sapcode;
+                        txtml.Text = ml.ToString();
+                        txtmh.Text = mh.ToString();
+                        txtts2.Text = ts2.ToString();
+                        txttc50.Text = tc50.ToString();
+                        txttc90.Text = tc90.ToString();
+                        txtwt.Text = wt;
+                        // hide paneof mooney and  and hrd
 
                     }
-                    foreach (object[] row in dataList)
+                    else if (machineName.Equals("rheo") && queryType.Equals("rheo"))
                     {
+                        mooneypane.Hide();
+                        rheopane.Show();
+                        hardnesspane.Show();
+                        txtsg.Show();
+                        lblgrt.Show();
+                        conpane.Hide();
+                        //hide pane of mooney as well as con 
+                        object vm = null, vi = null, ml4 = null, ml = null, mh = null, ts2 = null, tc50 = null, tc90 = null;
+                        // no pane is required to hide 
+                        if (!dataList.Any())
+                        {
+                            // data list is empty 
+                            MessageBox.Show("No Record found");
 
-                        ml = row[3];
-                        mh = row[4];
-                        ts2 = row[5];
-                        tc50 = row[6];
-                        tc90 = row[7];
+                        }
+                        foreach (object[] row in dataList)
+                        {
+                            ml = row[3];
+                            mh = row[4];
+                            ts2 = row[5];
+                            tc50 = row[6];
+                            tc90 = row[7];
+                        }
+                        txtbatchno.Text = btchNo.ToString();
+                        txtsacode.Text = sapcode;
+                        txtml.Text = ml.ToString();
+                        txtmh.Text = mh.ToString();
+                        txtts2.Text = ts2.ToString();
+                        txttc50.Text = tc50.ToString();
+                        txttc90.Text = tc90.ToString();
+                        txtwt.Text = wt;
                     }
-                   
-                    txtbatchno.Text = btchNo.ToString();
-                    txtsacode.Text = sapcode;
-                    txtml.Text = ml.ToString();
-                    txtmh.Text = mh.ToString();
-                    txtts2.Text = ts2.ToString();
-                    txttc50.Text = tc50.ToString();
-                    txttc90.Text = tc90.ToString();
-                    txtwt.Text = wt;
-                // hide paneof mooney and  and hrd
-              
-                } else if (machineName.Equals("rheo") && queryType.Equals("rheo"))
-                {
-                    mooneypane.Hide();
-                    rheopane.Show();           
-                    hardnesspane.Show();
-                    txtsg.Show();
-                    lblgrt.Show();
-                    conpane.Hide();
-                    //hide pane of mooney as well as con 
-                    object vm = null, vi = null, ml4 = null, ml = null, mh = null, ts2 = null, tc50 = null, tc90 = null;
-                    // no pane is required to hide 
-                    if (!dataList.Any())
+                    else if (machineName.Equals("moony") && queryType.Equals("moony"))
                     {
-                        // data list is empty 
-                        MessageBox.Show("No Record found");
+                        //mooney
+                        rheopane.Hide();
+                        conpane.Hide();
+                        lblgrt.Hide();
+                        txtsg.Hide();
+                        hardnesspane.Hide();
+                        intensivepane.Hide();
+                        mooneypane.Show();
+
+                        //hide pane except mooney 
+
+                        object vm = null, vi = null, ml4 = null;
+                        if (!dataList.Any())
+                        {
+                            // data list is empty 
+                            MessageBox.Show("No Record found");
+
+                        }
+                        foreach (object[] row in dataList)
+                        {
+                            Console.WriteLine("row" + row[0].ToString());
+                            vm = row[3];
+                            vi = row[4];
+                            ml4 = row[5];
+
+                        }
+                        txtsacode.Text = sapcode;
+                        txtbatchno.Text = btchNo;
+                        txtvm.Text = vm.ToString();
+                        txtvi.Text = vi.ToString();
+                        txtml4.Text = ml4.ToString();
+                    }
+                    else if (machineName.Equals("both") && queryType.Equals("Both"))
+                    {
+                        //both           
+                        rheopane.Show();
+                        hardnesspane.Show();
+                        txtsg.Show();
+                        lblgrt.Show();
+                        mooneypane.Show();
+                        conpane.Hide();
+                        object vm = null, vi = null, ml4 = null, ml = null, mh = null, ts2 = null, tc50 = null, tc90 = null;
+                        // no pane is required to hide 
+                        if (!dataList.Any())
+                        {
+                            // data list is empty 
+                            MessageBox.Show("No Record found");
+
+                        }
+                        foreach (object[] row in dataList)
+                        {
+
+                            vm = row[3];
+                            vi = row[4];
+                            ml4 = row[5];
+                            ml = row[6];
+                            mh = row[7];
+                            ts2 = row[8];
+                            tc50 = row[9];
+                            tc90 = row[10];
+                        }
+                        txtvm.Text = vm.ToString();
+                        txtvi.Text = vi.ToString();
+                        txtml4.Text = ml4.ToString();
+                        txtbatchno.Text = btchNo.ToString();
+                        txtsacode.Text = sapcode;
+                        txtml.Text = ml.ToString();
+                        txtmh.Text = mh.ToString();
+                        txtts2.Text = ts2.ToString();
+                        txttc50.Text = tc50.ToString();
+                        txttc90.Text = tc90.ToString();
+                        txtwt.Text = wt;
 
                     }
-                    foreach (object[] row in dataList)
+                    else if (machineName.Equals("both") && queryType.Equals("Bothcon"))
                     {
-                        ml = row[3];
-                        mh = row[4];
-                        ts2 = row[5];
-                        tc50 = row[6];
-                        tc90 = row[7];
-                    }                
-                    txtbatchno.Text = btchNo.ToString();
-                    txtsacode.Text = sapcode;
-                    txtml.Text = ml.ToString();
-                    txtmh.Text = mh.ToString();
-                    txtts2.Text = ts2.ToString();
-                    txttc50.Text = tc50.ToString();
-                    txttc90.Text = tc90.ToString();
-                    txtwt.Text = wt;             
+                        //both with con             
+                        Console.WriteLine("blockget");
+                        rheopane.Show();
+                        hardnesspane.Show();
+                        txtsg.Show();
+                        lblgrt.Show();
+                        conpane.Show();
+                        mooneypane.Show();
+                        object vm = null, vi = null, ml4 = null, ml = null, mh = null, ts2 = null, tc50 = null, tc90 = null;
+                        // no pane is required to hide 
+
+                        if (!dataList.Any())
+                        {
+                            // data list is empty 
+                            MessageBox.Show("No Record found");
+
+                        }
+                        foreach (object[] row in dataList)
+                        {
+                            vm = row[3];
+                            vi = row[4];
+                            ml4 = row[5];
+                            ml = row[6];
+                            mh = row[7];
+                            ts2 = row[8];
+                            tc50 = row[9];
+                            tc90 = row[10];
+                        }
+                        txtvm.Text = vm.ToString();
+                        txtvi.Text = vi.ToString();
+                        txtml4.Text = ml4.ToString();
+                        txtbatchno.Text = btchNo.ToString();
+                        txtsacode.Text = sapcode;
+                        txtml.Text = ml.ToString();
+                        txtmh.Text = mh.ToString();
+                        txtts2.Text = ts2.ToString();
+                        txttc50.Text = tc50.ToString();
+                        txttc90.Text = tc90.ToString();
+                        txtwt.Text = wt;
+
+                    }
+
+
                 }
-                else if (machineName.Equals("moony") && queryType.Equals("moony"))
+                else
                 {
-                    //mooney
-                    rheopane.Hide();
-                    conpane.Hide();
-                    lblgrt.Hide();
-                    txtsg.Hide();
-                    hardnesspane.Hide();
-                    intensivepane.Hide();
-                    mooneypane.Show();
 
-    //hide pane except mooney 
-                   
-                    object vm=null, vi=null, ml4=null;
-                    if (!dataList.Any())
-                    {
-                        // data list is empty 
-                        MessageBox.Show("No Record found");
-
-                    }
-                    foreach (object[] row in dataList)
-                    {
-                        Console.WriteLine("row"+row[0].ToString());
-                        vm = row[3];
-                        vi = row[4];
-                        ml4 = row[5];
-
-                    }
-                    txtsacode.Text = sapcode;
-                    txtbatchno.Text=btchNo;
-                    txtvm.Text = vm.ToString();
-                    txtvi.Text = vi.ToString();
-                    txtml4.Text = ml4.ToString();
-                }
-                else if (machineName.Equals("both") && queryType.Equals("Both"))
-                {
-    //both           
-                    rheopane.Show();
-                    hardnesspane.Show();                   
-                    txtsg.Show();
-                    lblgrt.Show();
-                    mooneypane.Show();
-                    conpane.Hide();
-                    object vm=null, vi=null, ml4=null,ml=null,mh=null,ts2=null,tc50=null,tc90=null;
-                    // no pane is required to hide 
-                    if (!dataList.Any())
-                    {
-                        // data list is empty 
-                        MessageBox.Show("No Record found");
-
-                    }
-                    foreach (object[] row in dataList)
-                    {
-  
-                        vm = row[3];
-                        vi = row[4];
-                        ml4 = row[5];
-                        ml = row[6];
-                        mh= row[7];
-                        ts2 = row[8];
-                        tc50 = row[9];
-                        tc90 = row[10];   
-                    }
-                    txtvm.Text = vm.ToString();
-                    txtvi.Text = vi.ToString();
-                    txtml4.Text = ml4.ToString();
-                    txtbatchno.Text = btchNo.ToString();
-                    txtsacode.Text = sapcode;
-                    txtml.Text = ml.ToString();
-                    txtmh.Text = mh.ToString(); 
-                    txtts2.Text = ts2.ToString();
-                    txttc50.Text = tc50.ToString(); 
-                    txttc90.Text = tc90.ToString();
-                    txtwt.Text = wt;
-
-                }
-                else if (machineName.Equals("both") && queryType.Equals("Bothcon"))
-                {
-                    //both with con             
-                    Console.WriteLine("blockget");
-                    rheopane.Show();
-                    hardnesspane.Show();
-                    txtsg.Show();
-                    lblgrt.Show();
-                    conpane.Show();
-                    mooneypane.Show();
-                    object vm = null, vi = null, ml4 = null, ml = null, mh = null, ts2 = null, tc50 = null, tc90 = null;
-                    // no pane is required to hide 
-
-                    if (!dataList.Any())
-                    {
-                        // data list is empty 
-                        MessageBox.Show("No Record found");
-
-                    }
-                    foreach (object[] row in dataList)
-                    {
-                        vm = row[3];
-                        vi = row[4];
-                        ml4 = row[5];
-                        ml = row[6];
-                        mh = row[7];
-                        ts2 = row[8];
-                        tc50 = row[9];
-                        tc90 = row[10];
-                    }
-                    txtvm.Text = vm.ToString();
-                    txtvi.Text = vi.ToString();
-                    txtml4.Text = ml4.ToString();
-                    txtbatchno.Text = btchNo.ToString();
-                    txtsacode.Text = sapcode;
-                    txtml.Text = ml.ToString();
-                    txtmh.Text = mh.ToString();
-                    txtts2.Text = ts2.ToString();
-                    txttc50.Text = tc50.ToString();
-                    txttc90.Text = tc90.ToString();
-                    txtwt.Text = wt;
-
+                    MessageBox.Show("Data entry is done !!");
                 }
 
 
-            
+
+
             }
             catch (Exception ex)
             {

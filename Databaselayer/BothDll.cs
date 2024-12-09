@@ -11,8 +11,9 @@ namespace Databaselayer
     {
         // write logic for both rheo and mooney required tables 
         private string connectionString = "Data Source=192.168.20.70,1433;Initial Catalog=Mixing;User ID=admin;Password=Fores@123;";
+       // private string connectionString = "Data Source=10.0.0.4,1433;Initial Catalog=Mixing;User ID=Sa;Password=Fores@123;";
 
-          // private string connectionString = "Data Source=DESKTOP-QI6H2EA\\SQLEXPRESS;Initial Catalog=Mixing;Integrated Security=True";
+        // private string connectionString = "Data Source=DESKTOP-QI6H2EA\\SQLEXPRESS;Initial Catalog=Mixing;Integrated Security=True";
         string machine = "both";
         public bool insertBothrecord(string sapcode, string batch_name, string mlmin, string mlmax, string mhmin, string mhmax, string ts2min, string ts2max, string tc50min, string tc50max, string tc90min, string tc90max, string hardnessmin, string hardnessmax, string specificgravitymin, string specificgravitymax, string conductivitymin, string conductivitymax, string vimin, string vimax, string vmmin, string vmmax, string ml4min, string ml4max)
         {
@@ -120,7 +121,7 @@ namespace Databaselayer
                 {
                     conn.Open();
                     Console.WriteLine("connection okkk");
-                    string query = "UPDATE master SET  batch_name = @batch_name, mlmin = @mlmin , mlmax =  @mlmax, mhmin = @mhmin , mhmax = @mhmax , ts2min = @ts2min, ts2max = @ts2max,tc50min = @tc50min ,tc50max = @tc50max,tc90min = @tc90min,tc90max=@tc90max,hardnessmin=@hrdmin,hardnessmax = @hrdmax, specificgravitymin = @spgravitymin,specificgravitymax = @spgravitymax,conductivitymin = @conmin,conductivitymax = @conmax,vimin=@vil, vimax=@vih, vmmin=@vml, vmmax=@vmh, ml4min=@ml4l, ml4max=@ml4h WHERE sapcode=@sapcode";
+                    string query = "UPDATE master SET  batch_name = @batch_name, mlmin = @mlmin , mlmax =  @mlmax, mhmin = @mhmin , mhmax = @mhmax , ts2min = @ts2min, ts2max = @ts2max ,tc50min = @tc50min ,tc50max = @tc50max , tc90min = @tc90min, tc90max=@tc90max , hardnessmin=@hrdmin , hardnessmax = @hrdmax, specificgravitymin = @spgravitymin,specificgravitymax = @spgravitymax,conductivitymin = @conmin,conductivitymax = @conmax,vimin=@vil, vimax=@vih, vmmin=@vml, vmmax=@vmh, ml4min=@ml4l, ml4max=@ml4h WHERE sapcode=@sapcode";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@batch_name", batch_name);
@@ -128,10 +129,10 @@ namespace Databaselayer
                         cmd.Parameters.AddWithValue("@mlmax", mlmax);
                         cmd.Parameters.AddWithValue("@mhmin", mhmin);
                         cmd.Parameters.AddWithValue("@mhmax", mhmax);
-                        cmd.Parameters.AddWithValue("@ts2min", ts2max);
+                        cmd.Parameters.AddWithValue("@ts2min", ts2min);
                         cmd.Parameters.AddWithValue("@ts2max", ts2max);
                         cmd.Parameters.AddWithValue("@tc50min", tc50min);
-                        cmd.Parameters.AddWithValue("@tc50max", tc50min);
+                        cmd.Parameters.AddWithValue("@tc50max", tc50max);
                         cmd.Parameters.AddWithValue("@tc90min", tc90min);
                         cmd.Parameters.AddWithValue("@tc90max", tc90max);
                         cmd.Parameters.AddWithValue("@hrdmin", hardnessmin);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Reflection.Emit;
 using System.ServiceProcess;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,16 +22,13 @@ namespace AplicationLayer
                 ConfigurationHandler.CreateConfigurationFile();
                 ConfigurationHandler.ReadConfigurationFile();
 
-                // Start the service
-
+               
                 // Instantiate RheometerService
-              //  RheometerService rheometerService = new RheometerService();
+             
+                RheometerService rheometerService = new RheometerService();
 
                 // Start the file watcher
-             //   rheometerService.StartFileWatcher();
-
-                // Subscribe to the ApplicationExit event
-
+                rheometerService.StartFileWatcher();
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -45,19 +43,19 @@ namespace AplicationLayer
            }
             catch (ArgumentNullException e)
             {
-                MessageBox.Show("Errrororo" + e.Message);
+                MessageBox.Show("argumentexception" + e.StackTrace);
 
             }
             catch (SqlException ex){
-                MessageBox.Show("Errrororo" + ex.Message);
+                MessageBox.Show("sqlexception" + ex.StackTrace);
             }
             catch (IndexOutOfRangeException ex)
             {
-                MessageBox.Show("Errrororo" + ex.Message);
+                MessageBox.Show("index out of bound" + ex.StackTrace);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Errrororo" + ex.Message);
+                MessageBox.Show("Errrororo" + ex.StackTrace);
             }
         }
 

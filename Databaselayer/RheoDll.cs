@@ -10,6 +10,8 @@ namespace Databaselayer
 {
     public class RheoDll
     {
+       // private string connectionString = "Data Source=10.0.0.4,1433;Initial Catalog=Mixing;User ID=Sa;Password=Fores@123;";
+
         private string connectionString = "Data Source=192.168.20.70,1433;Initial Catalog=Mixing;User ID=admin;Password=Fores@123;";
 
        // private string connectionString = "Data Source=DESKTOP-QI6H2EA\\SQLEXPRESS;Initial Catalog=Mixing;Integrated Security=True";
@@ -113,10 +115,10 @@ namespace Databaselayer
                         cmd.Parameters.AddWithValue("@mlmax", mlmax);
                         cmd.Parameters.AddWithValue("@mhmin", mhmin);
                         cmd.Parameters.AddWithValue("@mhmax", mhmax);
-                        cmd.Parameters.AddWithValue("@ts2min", ts2max);
+                        cmd.Parameters.AddWithValue("@ts2min", ts2min);
                         cmd.Parameters.AddWithValue("@ts2max", ts2max);
                         cmd.Parameters.AddWithValue("@tc50min", tc50min);
-                        cmd.Parameters.AddWithValue("@tc50max", tc50min);
+                        cmd.Parameters.AddWithValue("@tc50max", tc50max);
                         cmd.Parameters.AddWithValue("@tc90min", tc90min);
                         cmd.Parameters.AddWithValue("@tc90max", tc90max);
                         cmd.Parameters.AddWithValue("@hrdmin", hardnessmin);

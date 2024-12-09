@@ -48,7 +48,7 @@ namespace AplicationLayer
 
                 // Set DataGridView width and height
                 advancedDataGridView.Width = availableWidth;
-                advancedDataGridView.Height = this.ClientSize.Height- SystemInformation.HorizontalScrollBarHeight;
+                advancedDataGridView.Height = this.ClientSize.Height - SystemInformation.HorizontalScrollBarHeight;
 
                 // Calculate the width of each column (for example, distribute equally)
                 int columnCount = advancedDataGridView.Columns.Count;
@@ -63,12 +63,12 @@ namespace AplicationLayer
             catch (DivideByZeroException)
             {
 
-              
+
             }
-          
+
         }
 
-            private void advancedDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void advancedDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

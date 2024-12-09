@@ -32,7 +32,7 @@ namespace Businesslayer
             StartFileWatcher();
 
             // Initialize and start the timer
-            timer.Interval = 40000; // Adjust interval as needed (in milliseconds)
+            timer.Interval = 10000; // Adjust interval as needed (in milliseconds)
             timer.AutoReset = true;
             timer.Elapsed += TimerElapsed;
             timer.Start();
@@ -43,6 +43,7 @@ namespace Businesslayer
 
             // Format the date and time
             datapassdate = date1.ToString(format);
+            
         }
 
         public void StartFileWatcher()
@@ -50,7 +51,8 @@ namespace Businesslayer
             // Specify the directory to watch
             string directoryPath = @"C:\ProgramData\HEVEA\RHmeter\1.0.0.0";
             string fileName = "TestResults.csv";
-
+            
+            Console.WriteLine("send to sap ");
             // Configure the FileSystemWatcher
             watcher.Path = directoryPath;
             watcher.NotifyFilter = NotifyFilters.LastWrite;
@@ -80,11 +82,13 @@ namespace Businesslayer
                 // Read the last 100 lines from the file
                 string[] lines = File.ReadLines(filePath)
                                      .Reverse()
-                                     .Take(500)
+                                     .Take(10)
                                      .ToArray();
 
                 foreach (string line in lines)
                 {
+                    Console.WriteLine("line======" + line);
+
                     try
                     {
                         // Process each line as needed
@@ -136,10 +140,11 @@ namespace Businesslayer
                             {
                                // Console.WriteLine("for 1 machine method called ");
                                 dataAccess.StoreDataInDatabase(Rheo_Date_Time, sapcode, batchNo, plantNo, ml, mh, ts2, tc50, tc90, datapassdate);
+                                
                                 Console.WriteLine("for rheo1 method is called ");
                             }
-                            catch { 
-                            
+                            catch (Exception ex){ 
+                            Console.WriteLine (ex.Message); 
                           
                             }
                            
@@ -153,9 +158,11 @@ namespace Businesslayer
                             StringBuilder Rejection = new StringBuilder();
                             // if second rheo values are arises then first call the batchmaster data and compere data and update direct status 
                             (machineName, queryType, datalist) = Entryscreendll.GetBatchmaster(sapcode);
+
                             // Iterate through dataList and process each row
                             foreach (object[] row in datalist)
                             {
+                                      
 
                                
                                 double mlmin, mlmax, mhmin, mhmax, ts2min, ts2max, tc50min, tc50max, tc90min, tc90max, hardmin, hrdmax, sgmin, sgmax;
@@ -177,7 +184,7 @@ namespace Businesslayer
                                 double.TryParse(ts2.ToString(), out ts2d);
                                 double.TryParse(tc50.ToString(), out tc50d);
                                 double.TryParse(tc90.ToString(), out tc90d);
-
+                             
                                 bool mlMinOk = mld >= mlmin && mld <= mlmax;
                                 bool mhOk = mhd >= mhmin && mhd <= mhmax;
                                 bool ts2Ok = ts2d >= ts2min && ts2d <= ts2max;
@@ -237,7 +244,7 @@ namespace Businesslayer
                                     && tc90d >= tc90min && tc90d <= tc90max)
                                 {
 
-                                    Console.WriteLine("method block get ");
+                                    
                                     Console.WriteLine("plant======" + plantNo);
                                     string Message = "OK";
                                     // for update query with okk status 
@@ -246,7 +253,7 @@ namespace Businesslayer
                                 }
                                 else
                                 {
-                                    Console.WriteLine("plant======" + plantNo);
+                                   
 
                                     string PassRejection = Rejection.ToString();
                                     Entryscreendll.updateRheo2rejection(sapcode, batchNo, plantNo, PassRejection);
@@ -256,8 +263,16 @@ namespace Businesslayer
 
                             }
 
-
-                            dataAccess.StoreRheo2DataInDatabase( Rheo_Date_Time,sapcode, batchNo, plantNo, ml, mh, ts2, tc50, tc90, datapassdate);
+                            Console.WriteLine("row data is " + Rheo_Date_Time, sapcode, batchNo, plantNo, ml, mh, ts2, tc50, tc90, datapassdate);
+                            try
+                            {
+                                dataAccess.StoreRheo2DataInDatabase(Rheo_Date_Time, sapcode, batchNo, plantNo, ml, mh, ts2, tc50, tc90, datapassdate);
+                                Console.WriteLine("calleddddddddddddddddddddddddddddd is " );
+                            }
+                            catch (Exception ex) { 
+                            Console.WriteLine("ezxxxx is "+ex.StackTrace);
+                            }
+                            
                         }
 
 
@@ -266,7 +281,7 @@ namespace Businesslayer
                     catch (FormatException ex)
                     {
                         // Handle parsing errors
-                        Console.WriteLine($"Error parsing line: {line}. {ex.Message}");
+                        Console.WriteLine($"Error parsing lin: {line}. {ex.StackTrace}");
                         // You can choose to skip the line or take other appropriate action
                     }
 
@@ -275,7 +290,7 @@ namespace Businesslayer
             catch (Exception ex)
             {
                 // Handle any other exceptions
-                Console.WriteLine($"Error processing line:  {ex.Message}");
+                Console.WriteLine($"Error processing line:  {ex.StackTrace}");
             }
 
         }
