@@ -318,8 +318,19 @@ namespace Businesslayer
                         // for update query with okk status 
                         Entryscreendll.updateRecords(sapcode, batchno, H1val, H2val, H3val, H4val, sgval, wtval, dtval, plantNo, Message);
                         Entryscreenbll callqr = new Entryscreenbll();
-                      
-                        callqr.printQrcode(sapcode, batchno, wtval, ts2Value, tc90Value, hrdmean, sgval, 0);
+                        if (sapcode == "S109FB0015" || sapcode == "S109FB0020" || sapcode == "S109FB0052")
+                        {
+                            for (int i = 0; i < 3; i++) // Loop will execute 3 times
+                            {
+                                callqr.printQrcode(sapcode, batchno, wtval, ts2Value, tc90Value, hrdmean, sgval, 0);
+                            }
+                        }
+                        else
+                        {
+                            callqr.printQrcode(sapcode, batchno, wtval, ts2Value, tc90Value, hrdmean, sgval, 0);
+                            // Handle other cases here
+                        }
+                        
                         string rheodate = Entryscreendll.senddate(sapcode, batchno, plantNo);
                         Saptranfer.sendTosap(sapcode, batchno, mlValue, mhValue, ts2Value, tc50Value, tc90Value, hrdmean, sgval, wtval, plantNo, rheodate);
 
@@ -469,7 +480,18 @@ namespace Businesslayer
                         // for update query with okk status 
                         Entryscreendll.updateRecords(sapcode, batchno, H1val, H2val, H3val, H4val, C1val, C2val, C3val, C4val, sgval, wtval, dtval, plantNo, Message);
                         Entryscreenbll callqr = new Entryscreenbll();
-                        callqr.printQrcode(sapcode, batchno, wtval, ts2Value, tc90Value, hrdmean, sgval, 0);
+                        if (sapcode == "S109FB0015" || sapcode == "S109FB0020" || sapcode == "S109FB0052")
+                        {
+                            for (int i = 0; i < 3; i++) // Loop will execute 3 times
+                            {
+                                callqr.printQrcode(sapcode, batchno, wtval, ts2Value, tc90Value, hrdmean, sgval, 0);
+                            }
+                        }
+                        else
+                        {
+                            callqr.printQrcode(sapcode, batchno, wtval, ts2Value, tc90Value, hrdmean, sgval, 0);
+                            // Handle other cases here
+                        }
                         string rheodate = Entryscreendll.senddate(sapcode, batchno, plantNo);
                         Saptranfer.sendTosap(sapcode, batchno, mlValue, mhValue, ts2Value, tc50Value, tc90Value, hrdmean, sgval, wtval, plantNo, rheodate);
 
